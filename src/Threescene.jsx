@@ -25,7 +25,7 @@ const ThreeScene = () => {
 
     // Load GLTF Model
     const loader = new GLTFLoader();
-    const robotUrl = "/assets/Robotics_4.glb"; // Ensure correct path
+    const robotUrl = "/Activity/Robotics_4.glb"; // Ensure correct path
 
     loader.load(
       robotUrl,
@@ -70,7 +70,12 @@ const ThreeScene = () => {
         ctx.lineTo(x + width - radius, y);
         ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
         ctx.lineTo(x + width, y + height - radius);
-        ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+        ctx.quadraticCurveTo(
+          x + width,
+          y + height,
+          x + width - radius,
+          y + height
+        );
         ctx.lineTo(x + radius, y + height);
         ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
         ctx.lineTo(x, y + radius);
@@ -92,8 +97,15 @@ const ThreeScene = () => {
 
       // Create texture
       const texture = new THREE.CanvasTexture(canvas);
-      const geometry = new THREE.PlaneGeometry(canvasWidth / 50, canvasHeight / 50); // Scale appropriately
-      const material = new THREE.MeshBasicMaterial({ map: texture, transparent: true, side: THREE.DoubleSide });
+      const geometry = new THREE.PlaneGeometry(
+        canvasWidth / 50,
+        canvasHeight / 50
+      ); // Scale appropriately
+      const material = new THREE.MeshBasicMaterial({
+        map: texture,
+        transparent: true,
+        side: THREE.DoubleSide,
+      });
 
       // Create Mesh
       const textMesh = new THREE.Mesh(geometry, material);
